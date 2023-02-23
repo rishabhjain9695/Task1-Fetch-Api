@@ -1,13 +1,8 @@
 import React from 'react'
 import {useState,useEffect} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useSearchParams } from 'react-router-dom';
-
-
 export default function Fetchh() {
-  
     const[country,setCountry]=useState([]);
-    const [searchParams,setSearchParams]=useSearchParams();
     const[selectedCountry,setSelectedCountry]=useState("");
     const navigate=useNavigate();
     useEffect(()=>{

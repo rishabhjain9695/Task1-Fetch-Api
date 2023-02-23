@@ -15,10 +15,11 @@ export default function Cities() {
     fetch("https://countriesnow.space/api/v0.1/countries/cities", init).then((response) => response.json()).then((resp) => { setCities(resp.data) }).catch((error) => console.log(error))
 
   }, [])
+  cities.sort();
 
 
   return (
-    <div>
+    <div >
 
       <h1> Country name is :{countryN} </h1>
       {cities.map(e => <li>{e}</li>)}

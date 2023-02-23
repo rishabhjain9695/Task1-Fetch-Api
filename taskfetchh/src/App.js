@@ -7,11 +7,11 @@ import Cities from './Cities';
 function App() {
   return (
     
- <> <Routes> 
+ <Routes> 
   <Route path ='/' element={<Fetchh/>}/>
   <Route path='/:countryN' element={<Cities/>}/> 
  </Routes>
- </>
+ 
   );
 }
 

@@ -29,7 +29,7 @@ export default function Fetchh() {
     Dropdown link
   </a>  
   <select className="form-select" onChange={Handleeve}aria-label="Default select example">
-  <option selected>Open this select menu</option>
+  <option>Open this select menu</option>
  { country.map((e)=>{
     return(
     <option value={e.name}>{e.name}</option>

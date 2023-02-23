@@ -11,24 +11,24 @@ export default function Navbar() {
     }
   return (
     <div>
-          <ul class="nav nav-pills">
+          <ul className="nav nav-pills">
     <li class="nav-item">
-      <NavLink class="nav-link active" style={NavlinkCSS}to="/">Home</NavLink>
+      <NavLink className="nav-link active" style={NavlinkCSS}to="/">Home</NavLink>
     </li>
     <li class="nav-item">
-      <NavLink class="nav-link active" style={NavlinkCSS}to="/">Products</NavLink>
+      <NavLink className="nav-link active" style={NavlinkCSS}to="/">Products</NavLink>
     </li>
     <li class="nav-item">
-      <NavLink class="nav-link" style={NavlinkCSS}to="/a">About</NavLink>
+      <NavLink className="nav-link" style={NavlinkCSS}to="/a">About</NavLink>
     </li>
     <li class="nav-item">
-      <NavLink class="nav-link  active" style={NavlinkCSS} to="/c">Contact</NavLink>
+      <NavLink className="nav-link  active" style={NavlinkCSS} to="/c">Contact</NavLink>
     </li>
     <li class="nav-item">
-      <NavLink class="nav-link  active" style={NavlinkCSS} to="/u/anil">Anil</NavLink>
+      <NavLink className="nav-link  active" style={NavlinkCSS} to="/u/anil">Anil</NavLink>
     </li>
     <li class="nav-item">
-      <NavLink class="nav-link  active" style={NavlinkCSS} to="/u/peter">Peter</NavLink>
+      <NavLink className="nav-link  active" style={NavlinkCSS} to="/u/peter">Peter</NavLink>
     </li>
   </ul>
     </div>

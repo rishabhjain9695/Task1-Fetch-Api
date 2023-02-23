@@ -1,8 +1,13 @@
 import React from 'react'
 import {useState,useEffect} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+
+
 export default function Fetchh() {
+  
     const[country,setCountry]=useState([]);
+    const [searchParams,setSearchParams]=useSearchParams();
     const[selectedCountry,setSelectedCountry]=useState("");
     const navigate=useNavigate();
     useEffect(()=>{
@@ -32,13 +37,23 @@ export default function Fetchh() {
  })}
 </select>
 </div>
-    <ul className="nav nav-pills">
+    {/* <ul className="nav nav-pills">
     <li className="nav-item">
-      <NavLink class="nav-link active" onClick={(e)=>{navigate(`/${selectedCountry}`)
+      <NavLink class="nav-link active"  onClick={(e)=>{navigate(`/${selectedCountry}`)
       e.preventDefault();
+      navigate('/city');
+      setSearchParams({Countries:`${selectedCountry}`})
       }} >Click</NavLink>
     </li>
-    </ul>
+    {navigate(`/city/${selectedCountry}`
+    </ul> */}
+    <button id="btn1" onClick={()=>{
+       navigate(`${selectedCountry}`);   
+    
+    }}>click here</button> 
+    {/* <Button selectedCountry={selectedCountry}/> */}
+
+    
 </>
   )
 }
@@ -53,3 +68,14 @@ export default function Fetchh() {
         document.write(x.data[y].name);
         }
     }); */}
+    // document.getElementById("btn1").addEventListener("click",makerequest);
+// function makerequest(props){
+//   const init={
+//     method:'POST',
+//     header:{
+//       'Content-Type':'application/json'
+//     },
+//     body:'{"country":"`${selectedCountry}`"}'
+//   }
+//   fetch("https://countriesnow.space/api/v0.1/countries/cities",init).then((response)=>response.json()).then((data)=>{console.log(data)}).catch((error)=>console.log(error))
+// }

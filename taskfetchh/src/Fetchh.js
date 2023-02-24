@@ -4,6 +4,7 @@ import {  useNavigate } from 'react-router-dom';
 export default function Fetchh() {
     const[country,setCountry]=useState([]);
     const[selectedCountry,setSelectedCountry]=useState("");
+    const[select,setSelect]=useState(false);
    
     const navigate=useNavigate();
     useEffect(()=>{
@@ -15,6 +16,7 @@ export default function Fetchh() {
   const Handleeve=(e)=>{
     e.preventDefault();
     setSelectedCountry(e.target.value);
+    setSelect(true);
   }
   return (<>
   <div className='a'>
@@ -34,7 +36,10 @@ export default function Fetchh() {
 </div>
 <div className='btnfetch'><button id="btn1" className='btn btn-primary mt-3 centree' onClick={()=>{
        navigate(`${selectedCountry}`);   
-    
+       if(!select){
+       alert("please select country")
+       }
+
     }}>click here</button> </div>
   </div>
     

@@ -21,6 +21,7 @@ export default function Cities() {
       })
       .catch((error) => {
         console.log(error);
+        setNewerror("cities not present");
       });
   }, []);
   const HandleEvent = (e) => {

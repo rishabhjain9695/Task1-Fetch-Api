@@ -5,6 +5,7 @@ export default function Cities() {
   const [cities, setCities] = useState([]);
   const [searchValue, setSearchvalue] = useState("");
   const[searchcities,setSearchCities]=useState([]);
+  const[error,setNewerror]=useState("Fetching load please wait");
   const init = {
     method: "POST",
     headers: {
@@ -36,7 +37,7 @@ export default function Cities() {
           return <p className="text bg-info a rounded">{cityName}</p>;
         })
        : 
-         <p  className="text bg-info a rounded">"no city found"</p>
+         <p  className="text  a rounded">{error}</p>
     
   }
 
@@ -54,7 +55,7 @@ export default function Cities() {
       { (!searchValue? displaycities():(
         searchcities.length!=0?searchcities.map((cityName) => {
           return <p  className="text bg-info a rounded">{cityName}</p>;
-        }):( <p>"no search found"</p>)
+        }):( <p>"no city found "</p>)
       ))}
    
      

@@ -4,8 +4,8 @@ export default function Cities() {
   const { countryN } = useParams();
   const [cities, setCities] = useState([]);
   const [searchValue, setSearchvalue] = useState("");
-  const[searchcities,setSearchCities]=useState([]);
-  const[error,setNewerror]=useState("Fetching load please wait");
+  const [searchcities, setSearchCities] = useState([]);
+  const [error, setNewerror] = useState("Fetching load please wait");
   const init = {
     method: "POST",
     headers: {
@@ -25,39 +25,40 @@ export default function Cities() {
       });
   }, []);
 
-useEffect(()=>{
-  const timer=setTimeout(()=>selectedCity(searchValue),600)
+  useEffect(() => {
+    
+      const timer = setTimeout(() => selectedCity(searchValue), 4000);
+      return () => clearTimeout(timer);
 
-  return()=>clearTimeout(timer)
-},[searchValue])
+  }, [searchValue]);
 
-const selectedCity=(searchValue)=>{
-  const city=cities.filter((c) => c.toUpperCase().includes(searchValue.toUpperCase()));
-  setSearchCities(city);
-}
+  const selectedCity = (searchValue) => {
+    console.log("values filtered");
+    const city = cities.filter((c) =>
+      c.toUpperCase().includes(searchValue.toUpperCase())
+    );
+    setSearchCities(city);
+  };
 
   const HandleEvent = (e) => {
     setSearchvalue(e.target.value);
- 
-    }
-   
-   
-    
-  console.log(cities, "cities")
-  function displaycities(){
-    console.log(cities, "inside")
-      return cities.length ? 
-         cities.map((cityName) => {
-          return <p className="text bg-info a rounded">{cityName}</p>;
-        })
-       : 
-         <p  className="text  a rounded">{error}</p>
-    
+  };
+
+  function displaycities() {
+    return cities.length ? (
+      cities.map((cityName) => {
+        return <p className="text bg-info a rounded">{cityName}</p>;
+      })
+    ) : (
+      <p className="text  a rounded">{error}</p>
+    );
   }
 
   return (
     <div className="aa">
-   <Link className="btn btn-primary a btn w"  to='/'>Selectt country</Link>
+      <Link className="btn btn-primary a btn w" to="/">
+        Selectt country
+      </Link>
       <h1> Country name is :{countryN} </h1>
       <input
         type="text"
@@ -67,15 +68,15 @@ const selectedCity=(searchValue)=>{
         size="50"
       ></input>
       <h1> Cities Names</h1>
-      { (!searchValue? displaycities():(
-        searchcities.length!=0?searchcities.map((cityName) => {
-          return <p  className="text bg-info a rounded">{cityName}</p>;
-        }):( <h1>"no city found "</h1>)
-      ))}
-   
-     
-
-
+      {!searchValue ? (
+        displaycities()
+      ) : searchcities.length != 0 ? (
+        searchcities.map((cityName) => {
+          return <p className="text bg-info a rounded">{cityName}</p>;
+        })
+      ) : (
+        <h1>"no city found "</h1>
+      )}
     </div>
   );
 }

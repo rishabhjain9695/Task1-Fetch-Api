@@ -13,36 +13,32 @@ export default function Cities() {
     },
     body: JSON.stringify({ country: countryN }),
   };
-  useEffect(() => {
-    fetch("https://countriesnow.space/api/v0.1/countries/cities", init)
-      .then((response) => response.json())
-      .then((resp) => {
-        setCities(resp.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        setNewerror("cities not present");
-      });
-  }, []);
-
-useEffect(()=>{
-  const timer=setTimeout(()=>selectedCity(searchValue),600)
-
-  return()=>clearTimeout(timer)
-},[searchValue])
-
-const selectedCity=(searchValue)=>{
-  const city=cities.filter((c) => c.toUpperCase().includes(searchValue.toUpperCase()));
-  setSearchCities(city);
-}
-
+//   useEffect(() => {
+//     fetch("https://countriesnow.space/api/v0.1/countries/cities", init)
+//       .then((response) => response.json())
+//       .then((resp) => {
+//         setCities(resp.data);
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//         setNewerror("cities not present");
+//       });
+//   }, []);
   const HandleEvent = (e) => {
+    fetch("https://countriesnow.space/api/v0.1/countries/cities", init)
+    .then((response) => response.json())
+    .then((resp) => {
+      setCities(resp.data);
+    })
+    .catch((error) => {
+      console.log(error);
+      setNewerror("cities not present");
+    });
     setSearchvalue(e.target.value);
- 
-    }
-   
-   
-    
+    const city=cities.filter((c) => c.toUpperCase().includes(e.target.value.toUpperCase()));
+    setSearchCities(city);
+    // console.log(city);
+  };
   console.log(cities, "cities")
   function displaycities(){
     console.log(cities, "inside")

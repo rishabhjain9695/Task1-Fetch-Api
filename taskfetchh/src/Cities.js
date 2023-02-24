@@ -53,10 +53,11 @@ export default function Cities() {
         onChange={HandleEvent}
         size="50"
       ></input>
+      <h1> Cities Names</h1>
       { (!searchValue? displaycities():(
         searchcities.length!=0?searchcities.map((cityName) => {
           return <p  className="text bg-info a rounded">{cityName}</p>;
-        }):( <p>"no city found "</p>)
+        }):( <h1>"no city found "</h1>)
       ))}
    
      

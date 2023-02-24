@@ -35,9 +35,12 @@ export default function Fetchh() {
 </select>
 </div>
 <div className='btnfetch'><button id="btn1" className='btn btn-primary mt-3 centree' onClick={()=>{
-       navigate(`${selectedCountry}`);   
-       if(!select){
+    
+       if(!selectedCountry){
        alert("please select country")
+       }
+       else{
+        navigate(`${selectedCountry}`);   
        }
 
     }}>click here</button> </div>

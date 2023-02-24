@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 export default function Cities() {
-  let city = [];
-  let s = 0;
   const { countryN } = useParams();
   const [cities, setCities] = useState([]);
-  const [searchcityname, searchcity] = useState([]);
   const [searchValue, setSearchvalue] = useState("");
-  const[data,setState]=useState("");
+  const[searchcities,setSearchCities]=useState([]);
   const init = {
     method: "POST",
     headers: {
@@ -22,18 +19,30 @@ export default function Cities() {
         setCities(resp.data);
       })
       .catch((error) => {
-        setState("Cities notttttt  present");
+        console.log(error);
       });
   }, []);
   const HandleEvent = (e) => {
     setSearchvalue(e.target.value);
-    city = cities.filter((c) => c.toUpperCase().includes(e.target.value.toUpperCase()));
+    const city=cities.filter((c) => c.toUpperCase().includes(e.target.value.toUpperCase()));
+    setSearchCities(city);
     // console.log(city);
-    searchcity(city);
   };
+  console.log(cities, "cities")
+  function displaycities(){
+    console.log(cities, "inside")
+      return cities.length ? 
+         cities.map((cityName) => {
+          return <p className="text bg-info a rounded">{cityName}</p>;
+        })
+       : 
+         <p  className="text bg-info a rounded">"no city found"</p>
+    
+  }
 
   return (
-    <div className="">
+    <div className="aa">
+   <Link className="btn btn-primary a btn w"  to='/'>Selectt country</Link>
       <h1> Country name is :{countryN} </h1>
       <input
         type="text"
@@ -42,22 +51,15 @@ export default function Cities() {
         onChange={HandleEvent}
         size="50"
       ></input>
-      <input type="submit" className="btn btn-primary " value="Submit"></input>
-      {searchValue ? (
-        searchcityname?.length ? (
-          searchcityname.map((cityName) => {
-            return <p className="text">{cityName}</p>;
-          })
-        ) : (
-          <p  className="text">No Results Founddd</p>
-        )
-      ) : (
-        cities.map((cityName) => {
-          return <p  className="text">{cityName}</p>;
-        })
-      )}
-      {/* 
-      {<p>{state}</p>} */}
+      { (!searchValue? displaycities():(
+        searchcities.length!=0?searchcities.map((cityName) => {
+          return <p  className="text bg-info a rounded">{cityName}</p>;
+        }):( <p>"no search found"</p>)
+      ))}
+   
+     
+
+
     </div>
   );
 }

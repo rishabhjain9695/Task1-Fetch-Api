@@ -4,6 +4,7 @@ import {  useNavigate } from 'react-router-dom';
 export default function Fetchh() {
     const[country,setCountry]=useState([]);
     const[selectedCountry,setSelectedCountry]=useState("");
+   
     const navigate=useNavigate();
     useEffect(()=>{
         fetch("https://countriesnow.space/api/v0.1/countries/capital").then((response)=>{
@@ -18,7 +19,7 @@ export default function Fetchh() {
   return (<>
   <div className='a'>
   <div className="p-3 mb-2 bg-primary text-white" >
-      <h1 className='App'> this is dropdown button</h1>
+      <h1 className='App'> Select Country Name</h1>
     </div>
     <div className="">
 

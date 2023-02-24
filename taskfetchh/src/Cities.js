@@ -4,11 +4,10 @@ export default function Cities() {
   let city = [];
   let s = 0;
   const { countryN } = useParams();
-  // console.log(typeof country);
   const [cities, setCities] = useState([]);
-  const [searchcityname, ssearchCity] = useState([]);
+  const [searchcityname, searchcity] = useState([]);
   const [searchValue, setSearchvalue] = useState("");
-  const [state, setState] = useState("Fetching please wait...............");
+  const[data,setState]=useState("");
   const init = {
     method: "POST",
     headers: {
@@ -27,40 +26,34 @@ export default function Cities() {
       });
   }, []);
   const HandleEvent = (e) => {
-    let name = e.target.value;
     setSearchvalue(e.target.value);
-    city = cities.filter((c) => c.toUpperCase().includes(name.toUpperCase()));
-    console.log(city);
-    ssearchCity(city);
+    city = cities.filter((c) => c.toUpperCase().includes(e.target.value.toUpperCase()));
+    // console.log(city);
+    searchcity(city);
   };
 
   return (
-    <div>
+    <div className="">
       <h1> Country name is :{countryN} </h1>
       <input
         type="text"
         id="fname"
         name="fname"
-        value={searchValue}
         onChange={HandleEvent}
         size="50"
       ></input>
-      <input type="submit" value="Submit"></input>
-      {/* {(cities.length)?cities.map((cityName)=>{return <p>{cityName}</p>}):<p>{state}</p>} */}
-      {/* {(!searchcityname.length) ?
-        cities.map((cityName) => { return <p>{cityName}</p> })
-        : (searchcityname.length) ? searchcityname.map((cityName) => { return <p>{cityName}</p> }) : <p>No Results Found</p>} */}
+      <input type="submit" className="btn btn-primary " value="Submit"></input>
       {searchValue ? (
         searchcityname?.length ? (
           searchcityname.map((cityName) => {
-            return <p>{cityName}</p>;
+            return <p className="text">{cityName}</p>;
           })
         ) : (
-          <p>No Results Found</p>
+          <p  className="text">No Results Founddd</p>
         )
       ) : (
         cities.map((cityName) => {
-          return <p>{cityName}</p>;
+          return <p  className="text">{cityName}</p>;
         })
       )}
       {/* 

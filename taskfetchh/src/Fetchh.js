@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState,useEffect} from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 export default function Fetchh() {
     const[country,setCountry]=useState([]);
     const[selectedCountry,setSelectedCountry]=useState("");
@@ -16,14 +16,13 @@ export default function Fetchh() {
     setSelectedCountry(e.target.value);
   }
   return (<>
-    <div className='App text-bg-primary m-334'>
-      <h1> this is dropdown button</h1>
+  <div className='a'>
+  <div className="p-3 mb-2 bg-primary text-white" >
+      <h1 className='App'> this is dropdown button</h1>
     </div>
-    <div className="dropdown App">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown link
-  </a>  
-  <select className="form-select" onChange={Handleeve}aria-label="Default select example">
+    <div className="">
+
+  <select className="form-select  container w-50  mt-5" onChange={Handleeve}aria-label="Default select example">
   <option>Open this select menu</option>
  { country.map((e)=>{
     return(
@@ -32,45 +31,16 @@ export default function Fetchh() {
  })}
 </select>
 </div>
-    {/* <ul className="nav nav-pills">
-    <li className="nav-item">
-      <NavLink class="nav-link active"  onClick={(e)=>{navigate(`/${selectedCountry}`)
-      e.preventDefault();
-      navigate('/city');
-      setSearchParams({Countries:`${selectedCountry}`})
-      }} >Click</NavLink>
-    </li>
-    {navigate(`/city/${selectedCountry}`
-    </ul> */}
-    <button id="btn1" onClick={()=>{
+<div className='btnfetch'><button id="btn1" className='btn btn-primary mt-3 centree' onClick={()=>{
        navigate(`${selectedCountry}`);   
     
-    }}>click here</button> 
-    {/* <Button selectedCountry={selectedCountry}/> */}
+    }}>click here</button> </div>
+  </div>
+    
+    
+  
 
     
 </>
   )
 }
-{/* <script>
-    fetch("https://countriesnow.space/api/v0.1/countries/capital").then((response)=>{
-        return response.json();
-    }).then((x)=>{
-        // for(var x in data){
-        //     console.log(x);
-        // }
-        for(var y in x.data){
-        document.write(x.data[y].name);
-        }
-    }); */}
-    // document.getElementById("btn1").addEventListener("click",makerequest);
-// function makerequest(props){
-//   const init={
-//     method:'POST',
-//     header:{
-//       'Content-Type':'application/json'
-//     },
-//     body:'{"country":"`${selectedCountry}`"}'
-//   }
-//   fetch("https://countriesnow.space/api/v0.1/countries/cities",init).then((response)=>response.json()).then((data)=>{console.log(data)}).catch((error)=>console.log(error))
-// }
